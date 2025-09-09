@@ -1,0 +1,185 @@
+/*IMPORTA A FONTE*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*RESET CSS E ESTILO GLOBAL*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/*ESTILO BODY
+- ocupa altura total da tela
+- centraliza conteúdo
+- define a cor de fundo*/
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #340b5b;
+}
+
+/*ESTILIZA O TEXTO SELECIONADO PELO USUARIO*/
+::selection {
+    background-color: #53148e;
+    color: #fff;
+}
+
+/*CONTAINER PRINCIPAL*/
+.container {
+    max-width: 950px;
+    width: 100%;
+    padding: 40px 50px 40px 40px;
+    background: #fff;
+    margin: 0 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*TITULO DO TÓPICO DENTRO DO CONTAINER*/
+.container .topico {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/*CONJUNTO DA LISTA E CONTEUDO TEXTUAL*/
+.conteudo {
+    display: flex;
+
+    /* centraliza verticalmente */
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+/*LISTA DE TÓPICOS*/
+.conteudo .lista {
+    display: flex;
+
+    /* cria uma lista vertical */
+    flex-direction: column;
+
+    width: 80%;
+    margin-right: 50px;
+    position: relative;
+}
+
+/*CADA ITEM DA LISTA*/
+.conteudo .lista label {
+    height: 60px;
+    font-size: 22px;
+    font-weight: 500;
+
+    /* centraliza verticalmente o texto */
+    line-height: 60px;
+
+    cursor: pointer;
+    padding-left: 25px;
+    transition: all 0.5s ease;
+    color: #333;
+
+    /* garante que fique acima do "slide" */
+    z-index: 12;
+}
+
+/*MUDA A COR DO TEXTO QUANDO É SELECIONADO NA LISTA*/
+#introducao:checked~.lista label.introducao,
+#literatura:checked~.lista label.literatura,
+#moda:checked~.lista label.moda,
+#politica:checked~.lista label.politica,
+#musica:checked~.lista label.musica {
+    color: #fff;
+}
+
+/*MUDANÇA NA COR DOS ITENS AO PASSAR O MOUSE*/
+.conteudo .lista label:hover {
+    color: #340b5b;
+}
+
+/*SLIDE QUE INDICA O TÓPICO SELECIONADO*/
+.conteudo .slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    border-radius: 12px;
+    background: #340b5b;
+    transition: all 0.4s ease;
+}
+
+/*POSIÇÃO DO SLIDE DE ACORDO COM O ITEM SELECIONADO: */
+#introducao:checked~.lista .slide {
+    top: 0;
+}
+
+#literatura:checked~.lista .slide {
+    top: 60px;
+}
+
+#moda:checked~.lista .slide {
+    top: 120px;
+}
+
+#politica:checked~.lista .slide {
+    top: 180px;
+}
+
+#musica:checked~.lista .slide {
+    top: 240px;
+}
+
+/*---------------------------------*/
+
+/*AREA DO TEXTO DE CADA TÓPICO*/
+.conteudo .conteudo-texto {
+    width: 80%;
+    height: 100%;
+}
+
+/*TEXTO INICIALMENTE ESCONDIDO*/
+.conteudo .texto {
+    display: none;
+}
+
+/*TITULO DO TEXTO*/
+.conteudo .texto .titulo {
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/*ALINHAMENTO DOS PARAGRAFOS*/
+.conteudo .texto p {
+    text-align: justify;
+}
+
+/*MOSTRA A INTRODUÇÃO PRIMEIRO POR PADRÃO*/
+.conteudo .conteudo-texto .introducao {
+    display: block;
+}
+
+/*MOSTRA O TEXTO CORRESPONDENTE AO ITEM SELECIONADO*/
+#introducao:checked~.conteudo-texto .introducao,
+#literatura:checked~.conteudo-texto .literatura,
+#moda:checked~.conteudo-texto .moda,
+#politica:checked~.conteudo-texto .politica,
+#musica:checked~.conteudo-texto .musica {
+    display: block;
+}
+
+/*ESCONDE A INTRODUÇÃO QUANDO OUTRO ITEM ESTÁ SELECIONADO*/
+#literatura:checked~.conteudo-texto .introducao,
+#moda:checked~.conteudo-texto .introducao,
+#politica:checked~.conteudo-texto .introducao,
+#musica:checked~.conteudo-texto .introducao {
+    display: none;
+}
+
+/*REMOVE O PADRÃO DO INPUT DE RÁDIO*/
+.conteudo input {
+    display: none;
+}
